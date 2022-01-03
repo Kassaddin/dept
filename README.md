@@ -5,6 +5,7 @@
 Part 2 of assignment for a position of middle QA for Dept.
 
 Assignment link: [here](https://www.deptagency.com/assignment-qa-engineer/)
+
 Part 1 can be found here: [Test Plan](https://docs.google.com/document/d/1Q8xXdt8qR2xjgtS1moschGt80m6s7iagdqzn2DlSrHg/edit?usp=sharing)
 
 ## Cases that was automated
@@ -23,6 +24,7 @@ File: [automationpractice.purchase.js](https://github.com/Kassaddin/dept/blob/ma
 To run this project, install Cypress locally using npm:
 
 ```npm install cypress --save-dev```
+
 
 Run tests in terminal:
 
