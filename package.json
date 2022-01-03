@@ -1,0 +1,20 @@
+{
+  "name": "dept",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^9.2.0",
+    "cypress-file-upload": "^5.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox",
+    "cy:run:automationpractice": "cypress run --spec 'cypress/integration/automationpractice.*.js'",
+    "cy:run:herokuapp": "cypress run --spec 'cypress/integration/herokuapp.*.js'"
+  },
+  "author": "Pichkurov Alexander",
+  "license": "ISC"
+}
