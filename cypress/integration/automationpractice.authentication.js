@@ -3,15 +3,15 @@
 // Create unique email for registration. Won't work for parallell testing.
 function createEmail() {
     const coreMail = 'kassaddin';
-    let today = Date.now();
-    let testMail = `${coreMail}+id${today}@gmail.com`;
+    const today = Date.now();
+    const testMail = `${coreMail}+id${today}@gmail.com`;
 
     return testMail;
 }
 
 describe('Create new account', () => {
     // Generate new email.
-    let mail = createEmail();
+    const mail = createEmail();
 
     it('get and type in unique email to create new account', () => {
         cy.visit('http://automationpractice.com/index.php?controller=authentication');
@@ -19,43 +19,13 @@ describe('Create new account', () => {
         cy  // Type in generated email.
             .get('input[id="email_create"]')
             .type(mail);
-    })
 
-    it('press "Create an account" button', () => {
-        // Pass/Fail criteria.
-        let condition = true;
+        // Add new email into "createdMail.txt".
+        cy.writeFile('createdMail.txt', `${mail}\n`, { flag: 'a+' });
 
         cy  // Find and click on a "Create an account" button.
             .get('button[id="SubmitCreate"]')
             .click();
-
-        cy  // Wait for error messsage to pop-up if email is not unique.
-            .wait(500);
-
-        cy  // Check error message after click.
-            .get('div[id="create_account_error"]')
-            .then(($error) => {
-                if ($error.is(':visible')) {    // If error message is visible set pass-condition to false. And stop further steps.
-                    condition = false;
-                    cy.log('Such email is already in use');
-                    Cypress.runner.stop();
-                }
-                else {  // Else wait for 5 sec for page to load and check that it is the one we expect.
-                    cy.wait(5000);  
-
-                    // Add new email into createdMail.txt to use later.
-                    cy.writeFile('createdMail.txt', `${mail}\n`, { flag: 'a+' });   
-                    
-                    cy  // Check loaded page's <h1> to assert this is one we expect.
-                        .get('h1')
-                        .then(($h1) => {
-                            expect($h1).to.have.text('Create an account')
-                        })
-                }
-            });
-
-        // Assert Pass/Fail criteria.
-        cy.expect(condition).to.be.true;
     })
 
     it('fill form with data', () => {

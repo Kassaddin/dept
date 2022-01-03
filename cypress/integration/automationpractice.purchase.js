@@ -4,24 +4,22 @@ describe('Hover over Women categorie and click on a subcategory, and filterover'
     it('pick an item to buy and add it to cart', () => {
         cy.visit('http://automationpractice.com/index.php')
 
-        cy  // Find an <li> element as a first child of <ul>. Then trigger mouse events to hover over and move cursor
+        cy  // Index Page. Find an <li> element as a first child of <ul>. Then trigger mouse events to hover over and move cursor
             .get('ul[id="homefeatured"]')
             .children('li')
             .first()
             .trigger('mouseover')
             .trigger('mousemove');
 
-        cy  // Find button, check that it contains Add to cart caption. Then click on it.
+        cy  // Index Page. Find button, check that it contains Add to cart caption. Then click on it.
             .get('a[data-id-product="1"]')
             .contains('Add to cart')
             .click();
-    })
 
-    it('proceed to checkout and finish purchase', () => {
-        cy
+        cy  // Index Page. Locate pop-up window.
             .window()
             .then(() => {
-                cy  // Find button, check that it contains Add to cart caption. Then click on it.
+                cy  // Find button, check that it contains "Add to cart" caption. Then click on it.
                     .get('div[id="layer_cart"]')
                     .within(() => {
                         cy
@@ -39,15 +37,9 @@ describe('Hover over Women categorie and click on a subcategory, and filterover'
             .find('a[class="button btn btn-default standard-checkout button-medium"]')
             .click();
 
-        cy  // Sign in page. Read "createdEmail.txt" file and get email from it for authentication.
-            .readFile('createdMail.txt')
-            .then(text => {
-                let email = text.substring('0', text.indexOf('\n'));
-
-                cy  // Paste first email from file
-                    .get('input[id="email"]')
-                    .type(email);
-            })
+        cy  // Sign in page. Paste test email from "cypress.env.json" file
+            .get('input[id="email"]')
+            .type(Cypress.env('customer').test_email);
         cy  // Sign in page. Get password from "cypress.env.json" file.
             .get('input[id="passwd"]')
             .type(Cypress.env('customer').passwd);
@@ -58,7 +50,7 @@ describe('Hover over Women categorie and click on a subcategory, and filterover'
         cy  // Address page. Leave page information as it is. Click "Proceed to checkout" button.
             .get('button[name="processAddress"]')
             .click();
-            
+
         cy  // Shipping page. Leave page information as it is. Check "Terms of service" checkbox.
             .get('div[class="checker"]')
             .find('input[id="cgv"]')

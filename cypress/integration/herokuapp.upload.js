@@ -11,9 +11,11 @@ describe('Validate file uploading', () => {
         cy  // Find file-upload input and attach file from fixtures.
             .get('input[id="file-upload"]')
             .attachFile(fixtureFile);
+
         cy  // Press submit button.
             .get('input[id="file-submit"]')
             .click();
+            
         cy  // Assert that picture been uploaded.
             .get('div[id="uploaded-files"]')
             .should('contain', 'testPicture.png');
