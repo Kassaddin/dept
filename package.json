@@ -13,7 +13,8 @@
     "cy:run:chrome": "cypress run --browser chrome",
     "cy:run:firefox": "cypress run --browser firefox",
     "cy:run:automationpractice": "cypress run --spec 'cypress/integration/automationpractice.*.js'",
-    "cy:run:herokuapp": "cypress run --spec 'cypress/integration/herokuapp.*.js'"
+    "cy:run:herokuapp": "cypress run --spec 'cypress/integration/herokuapp.*.js'",
+    "cy:open": "cypress open"
   },
   "author": "Pichkurov Alexander",
   "license": "ISC"
