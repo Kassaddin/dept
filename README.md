@@ -10,19 +10,18 @@ Part 1 can be found here: [Test Plan](https://docs.google.com/document/d/1Q8xXdt
 
 ## Cases that were automated
 1. Access  http://the-internet.herokuapp.com/broken_images, validate if there are broken images.
-
 File: [herokuapp.images.js](https://github.com/Kassaddin/dept/blob/master/cypress/integration/herokuapp.images.js)
+
 2. Access http://the-internet.herokuapp.com/upload and try uploading any file.
-
 File: [herokuapp.upload.js](https://github.com/Kassaddin/dept/blob/master/cypress/integration/herokuapp.upload.js)
+
 3. Access http://automationpractice.com/index.php, Hover over one of the main categories and click on a subcategory Women.
-
 File: [automationpractice.categories.js](https://github.com/Kassaddin/dept/blob/master/cypress/integration/automationpractice.categories.js)
+
 4. Access http://automationpractice.com/index.php, create new account.
-
 File: [automationpractice.authentication.js](https://github.com/Kassaddin/dept/blob/master/cypress/integration/automationpractice.authentication.js)
-5. Access  http://automationpractice.com/index.php, hover over a product from the home page and add it to the basket, then check it out as registered user. Payment with check.
 
+5. Access  http://automationpractice.com/index.php, hover over a product from the home page and add it to the basket, then check it out as registered user. Payment with check.
 File: [automationpractice.purchase.js](https://github.com/Kassaddin/dept/blob/master/cypress/integration/automationpractice.purchase.js)
 
 ## Install and run
